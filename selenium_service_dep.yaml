@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium-service
+spec:
+  selector:
+    app: selenium-deployment-label
+  ports:
+    - port: 4444
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-deployment
+  labels:
+    app: selenium-deployment-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: selenium-deployment-label
+  template:
+    metadata:
+      labels:
+        app: selenium-deployment-label
+    spec:
+      containers:
+        - name: standalone-selenium
+          image: selenium/standalone-chrome
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 4444
