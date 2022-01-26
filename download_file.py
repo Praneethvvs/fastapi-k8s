@@ -31,5 +31,6 @@ def download_file():
 
     # Click on Download Button
     driver.find_element(by=By.ID,value='link-to-download').click()
+    return "Hello World"
 
 download_file()
