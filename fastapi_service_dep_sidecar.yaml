@@ -32,7 +32,7 @@ spec:
           emptyDir: {}
       containers:
         - name: fastapi-k8s
-          image: pvvsdoc001/fastapi-k8s:2.0.5
+          image: pvvsdoc001/fastapi-k8s:2.0.6
           resources:
             limits:
               memory: "128Mi"
