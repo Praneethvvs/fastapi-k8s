@@ -27,9 +27,12 @@ spec:
       labels:
         app: fastapi-k8s-deployment-label
     spec:
+      volumes:
+        - name: sel-mount
+          emptyDir: {}
       containers:
         - name: fastapi-k8s
-          image: pvvsdoc001/fastapi-k8s:2.0.2
+          image: pvvsdoc001/fastapi-k8s:2.0.3
           resources:
             limits:
               memory: "128Mi"
@@ -37,12 +40,12 @@ spec:
           ports:
             - containerPort: 8000
           volumeMounts:
-            - name: sel_mount
-              mountPath: /sel_results
+            - name: sel-mount
+              mountPath: /usr/app/sel_results
         - name: selenium-container
           image: selenium/standalone-chrome
           ports:
             - containerPort: 4444
           volumeMounts:
-            - name: sel_mount
-              mountPath: /home/seluser/Downloads
+            - name: sel-mount
+              mountPath: /home/seluser
