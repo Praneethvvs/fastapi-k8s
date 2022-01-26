@@ -18,7 +18,7 @@ metadata:
 #  labels:
 #    app: fastapi-k8s-deployment-label
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: fastapi-k8s-deployment-label
@@ -32,7 +32,7 @@ spec:
           emptyDir: {}
       containers:
         - name: fastapi-k8s
-          image: pvvsdoc001/fastapi-k8s:2.0.3
+          image: pvvsdoc001/fastapi-k8s:2.0.4
           resources:
             limits:
               memory: "128Mi"
